@@ -1,0 +1,16 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Wrong Page
+{% endblock %}
+
+{% block body %}
+
+{% autoescape off %}
+    <h1 style="color:red;">Wrong Page</h1>
+    Sorry that word does not exist. 
+    key : {{key}}
+    value : {{value}}
+{% endautoescape %}
+
+{% endblock %}

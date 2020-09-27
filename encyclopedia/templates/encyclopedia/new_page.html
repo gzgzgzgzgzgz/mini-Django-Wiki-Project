@@ -1,0 +1,28 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Create New Page
+    <style>
+        textarea{
+            width: auto;
+            border: 1px solid black;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <h1>Create New Page</h1>
+    <form action="{% url 'encyclopedia:creating' %}" method="POST">
+        {% csrf_token %}
+        Title 
+        <br>
+        <textarea  rows = "1" cols = "20" name = "title"  placeholder="Title of the page"></textarea>
+        <br>
+        Content
+        <br>
+        <textarea  rows = "1" cols = "20" name = "content" placeholder="Write page content in Markdown"></textarea>
+        <br>
+        <input type = "submit" value = "submit">
+    </form>
+
+{% endblock %}
