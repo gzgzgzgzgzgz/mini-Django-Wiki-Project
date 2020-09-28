@@ -7,6 +7,7 @@
 {% block body %}
 
 {% autoescape off %}
+    <a href = "{% url 'encyclopedia:edit' title%}">Edit This Page</a>
     {{ content }}
 {% endautoescape %}
 

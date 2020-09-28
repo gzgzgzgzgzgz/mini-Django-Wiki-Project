@@ -69,4 +69,19 @@ def creating(request):
 def random_list(request):
     entry = random.choice(request.session['entry'])
     return HttpResponseRedirect(reverse("encyclopedia:title", kwargs= {'title': entry}))
-        
+
+def edit(request, title):
+    content = util.get_entry(title)
+    return render(request, "encyclopedia/edit_page.html", {
+        'title': title,
+        'content': content
+    })
+
+def after_edit(request, title):
+    if request.method == "POST":
+        new_entry = NewEntry(request.POST)
+        if new_entry.is_valid():
+            content = request.POST.get("edited_content")
+            util.save_entry(title, content)
+    return HttpResponseRedirect(reverse("encyclopedia:title", kwargs={"title": title}))
+
